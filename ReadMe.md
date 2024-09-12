@@ -10,7 +10,6 @@ Import this library in your maven project as a dependency.
 <dependency>
   <groupId>com.geektrust.selenium</groupId>
   <artifactId>lambdatest-remote-selenium-webdriver</artifactId>
-  <packaging>jar</packaging>
   <version>1.0.0</version>
 </dependency>
 ```
