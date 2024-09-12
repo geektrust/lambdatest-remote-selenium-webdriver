@@ -51,7 +51,7 @@ public class Main {
 }
 ```
 
-While running the application ensure that the environment variables are set.
+While running the `Main.java` file ensure that the environment variables are set.
 
 ### Using in JUnit test
 
@@ -96,4 +96,9 @@ public class MySeleniumJUnitTest {
   }
 }
 
+```
+
+You can then run your tests using the command 
+```bash
+USER_EMAIL=<email> SELENIUM_TEST_NAME=<test_suit_name> LT_USERNAME=<Lambda Test Username> LT_ACCESS_KEY=<Lambda Test Access Key> LT_REMOTE_URL=https://hub.lambdatest.com/wd/hub mvn test
 ```
