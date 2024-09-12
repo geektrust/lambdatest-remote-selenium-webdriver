@@ -38,7 +38,6 @@ public class RemoteSeleniumWebDriverAspect {
     ProceedingJoinPoint joinPoint,
     RemoteSeleniumWebDriver webDriverInit
   ) throws Throwable {
-    System.out.println("in initWebDriver " + System.getenv("LT_REMOTE_URL"));
     ChromeOptions browserOptions = new ChromeOptions();
     browserOptions.setPlatformName("Windows 10");
     browserOptions.setBrowserVersion("128");
@@ -67,7 +66,6 @@ public class RemoteSeleniumWebDriverAspect {
           new URL(System.getenv("LT_REMOTE_URL")),
           browserOptions
         );
-      System.out.println("remote web driver created");
       Object result = joinPoint.proceed();
       return result;
     } catch (MalformedURLException e) {

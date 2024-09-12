@@ -29,14 +29,13 @@ public class RemoteSeleniumWebDriverTest {
     userEmail = "${USER_EMAIL:defaultEmail}"
   )
   public WebDriver webDriver() {
-    System.out.println("Pre-main method logic executed.");
     return aspect.getRemoteWebDriver();
   }
 
   @BeforeEach
   public void setUp() {
     ApplicationContext context = new AnnotationConfigApplicationContext(
-      WebDriverConfig.class
+      RemoteWebDriverConfig.class
     );
     RemoteSeleniumWebDriverTest app = context.getBean(
       RemoteSeleniumWebDriverTest.class
