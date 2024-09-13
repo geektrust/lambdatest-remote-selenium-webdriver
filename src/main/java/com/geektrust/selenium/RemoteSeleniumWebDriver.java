@@ -10,7 +10,4 @@ import java.lang.annotation.Target;
 public @interface RemoteSeleniumWebDriver {
     String userEmail();
     String testName();
-    String projectName() default "Geektrust Selenium Test";
-    String platformName() default "Windows 10";
-    String browserVersion() default "128";
 }

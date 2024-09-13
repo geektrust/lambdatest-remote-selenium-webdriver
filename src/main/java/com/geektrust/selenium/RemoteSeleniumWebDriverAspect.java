@@ -24,13 +24,13 @@ public class RemoteSeleniumWebDriverAspect {
   @Value("${SELENIUM_TEST_NAME}")
   private String testName;
 
-  @Value("${PROJECT_NAME}")
+  @Value("${PROJECT_NAME:Geektrust Selenium Test}")
   private String projectName;
 
-  @Value("${PLATFORM_NAME}")
+  @Value("${PLATFORM_NAME:Windows 10}")
   private String platformName;
 
-  @Value("${BROWSER_VERSION}")
+  @Value("${BROWSER_VERSION:128}")
   private String browserVersion;
 
   @Around("@annotation(webDriverInit)")
