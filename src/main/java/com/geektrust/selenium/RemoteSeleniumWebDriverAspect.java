@@ -6,6 +6,7 @@ import java.util.HashMap;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -38,11 +39,12 @@ public class RemoteSeleniumWebDriverAspect {
     ProceedingJoinPoint joinPoint,
     RemoteSeleniumWebDriver webDriverInit
   ) throws Throwable {
-    ChromeOptions browserOptions = new ChromeOptions();
-    browserOptions.setPlatformName("Windows 10");
-    browserOptions.setBrowserVersion("128");
-
     String[] tags = new String[] { userEmail, testName };
+    MutableCapabilities w3cCapabilities = new MutableCapabilities();
+    w3cCapabilities.setCapability("browserName", "chrome");
+    w3cCapabilities.setCapability("browserVersion", "128.0");
+    w3cCapabilities.setCapability("platformName", "Windows 10"); // Example for platform
+
     HashMap<String, Object> ltOptions = new HashMap<String, Object>();
     ltOptions.put("username", System.getenv("LT_USERNAME"));
     ltOptions.put("accessKey", System.getenv("LT_ACCESS_KEY"));
@@ -57,14 +59,14 @@ public class RemoteSeleniumWebDriverAspect {
     ltOptions.put("selenium_version", "4.0.0");
     ltOptions.put("w3c", true);
     ltOptions.put("tags", tags);
+    w3cCapabilities.setCapability("LT:Options", ltOptions);
 
-    browserOptions.setCapability("LT:Options", ltOptions);
-    
     try {
+      System.out.println(System.getenv("LT_REMOTE_URL"));
       remoteWebDriver =
         new RemoteWebDriver(
           new URL(System.getenv("LT_REMOTE_URL")),
-          browserOptions
+          w3cCapabilities
         );
       Object result = joinPoint.proceed();
       return result;
