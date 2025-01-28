@@ -43,7 +43,7 @@ public class RemoteSeleniumWebDriverAspect {
     MutableCapabilities w3cCapabilities = new MutableCapabilities();
     w3cCapabilities.setCapability("browserName", "chrome");
     w3cCapabilities.setCapability("browserVersion", "128.0");
-    w3cCapabilities.setCapability("platformName", "Windows 10"); // Example for platform
+    w3cCapabilities.setCapability("platformName", "Linux"); // Example for platform
 
     HashMap<String, Object> ltOptions = new HashMap<String, Object>();
     ltOptions.put("username", System.getenv("LT_USERNAME"));
